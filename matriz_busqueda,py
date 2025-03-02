@@ -1,0 +1,23 @@
+# Programa 1: Búsqueda en una matriz 3x3
+
+def buscar_valor(matriz, valor):
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] == valor:
+                return (i, j)
+    return None
+
+# Definir una matriz 3x3
+matriz = [
+    [10, 25, 30],
+    [15, 35, 40],
+    [20, 45, 50]
+]
+
+valor_buscar = int(input("Ingrese el valor a buscar: "))
+resultado = buscar_valor(matriz, valor_buscar)
+
+if resultado:
+    print(f"Valor encontrado en la posición: {resultado}")
+else:
+    print("Valor no encontrado en la matriz.")
