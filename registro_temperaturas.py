@@ -1,26 +1,24 @@
-import random  # Importamos la librería para generar números aleatorios
+Calcula el promedio de temperaturas para cada ciudad.
 
-# Definimos las ciudades y días de la semana
-ciudades = ["Quito", "Guayaquil"]
-dias_semana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-semanas = 2  # Número de semanas
+    Args:
+        temperaturas (dict): Diccionario con las temperaturas de cada ciudad.
 
-# Creamos una matriz 3D con temperaturas aleatorias entre 10°C y 35°C
-temperaturas = [[[random.randint(10, 35) for _ in range(7)] for _ in range(semanas)] for _ in range(len(ciudades))]
+    Returns:
+        dict: Diccionario con los promedios de temperatura de cada ciudad.
+    """
+    promedios = {}
+    for ciudad, temps in temperaturas.items():
+        promedio = sum(temps) / len(temps)
+        promedios[ciudad] = promedio
+    return promedios
 
-# Mostrar los datos generados
-print("\n📌 Registro de temperaturas diarias:")
-for i, ciudad in enumerate(ciudades):  # Recorremos las ciudades
-    print(f"\nCiudad: {ciudad}")
-    
-    for semana in range(semanas):  # Recorremos las semanas
-        print(f"  Semana {semana + 1}: {temperaturas[i][semana]}")  # Muestra las temperaturas diarias
+# Datos de ejemplo (puedes modificarlos con tus datos reales)
+temperaturas = {
+    "Ciudad A": [25, 28, 30, 27],
+    "Ciudad B": [22, 24, 26, 23],
+    "Ciudad C": [31, 33, 35, 32]
+}
 
-# Calcular y mostrar el promedio de temperaturas por ciudad y semana
-print("\n📊 Promedio de temperaturas:")
-for i, ciudad in enumerate(ciudades):
-    print(f"\nCiudad: {ciudad}")
-
-    for semana in range(semanas):
-        promedio = sum(temperaturas[i][semana]) / len(dias_semana)  # Calculamos el promedio
-        print(f"  Semana {semana + 1}: Promedio de temperatura = {promedio:.2f}°C")  # Mostramos el resultado
+# Calcular y mostrar los promedios
+promedios_calculados = calcular_promedio_temperaturas(temperaturas)
+print(promedios_calculados)
